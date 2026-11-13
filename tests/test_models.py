@@ -218,3 +218,25 @@ def test_model_feature_importance_for_pipeline(winner_model):
     importance = model_feature_importance(winner_model.model, FEATURE_COLUMNS)
     assert len(importance) == len(FEATURE_COLUMNS)
     assert importance["importance"].is_monotonic_decreasing
+
+
+def test_model_feature_importance_maps_surviving_columns():
+    # SimpleImputer drops all-NaN columns, so the estimator's importance vector
+    # is shorter than the requested feature list.  Names must follow the
+    # surviving columns instead of discarding the whole importance table.
+    X = pd.DataFrame(
+        {
+            "a": [1.0, 2.0, 3.0, 4.0, 5.0],
+            "all_nan": [np.nan] * 5,
+            "c": [5.0, 4.0, 3.0, 2.0, 1.0],
+        }
+    )
+    y = np.array([1.0, 2.0, 3.0, 4.0, 5.0])
+    model = make_regressor("random_forest", {"n_estimators": 10})
+    model.fit(X, y)
+
+    importance = model_feature_importance(model, ["a", "all_nan", "c"])
+
+    assert set(importance["feature"]) == {"a", "c"}
+    assert len(importance) == 2
+    assert importance["importance"].is_monotonic_decreasing

@@ -168,5 +168,7 @@ def render_coverage_markdown(df: pd.DataFrame, payload: dict[str, Any]) -> str:
         "- Jolpica is the primary historical source; absent seasons/endpoints are never filled with synthetic data.",
         "- OpenF1 coverage starts in 2023. The collector records which session endpoints are available.",
         "- FastF1 session loading is optional because it downloads large timing/telemetry datasets.",
+        "- Known Jolpica qualifying gaps: 2001-2002 expose no qualifying; 1996-2000 are partial. Results, grids and standings remain complete from 1995 onward.",
+        "- The 2026 calendar lists 23 rounds; only completed races appear in the results columns. Unraced rounds are not fabricated.",
     ]
     return "\n".join(lines)

@@ -202,14 +202,20 @@ def test_train_all_writes_bundle_comparison_and_registry(patched_training):
 
 def test_train_all_skips_unchanged_dataset(patched_training):
     tmp_path, _ = patched_training
-    train_module.train_all(tasks=["winner"], modes=["after_qualifying"], n_iter=1)
+    first = train_module.train_all(
+        tasks=["winner"], modes=["after_qualifying"], n_iter=1
+    )
 
     second = train_module.train_all(
         tasks=["winner"], modes=["after_qualifying"], n_iter=1
     )
 
-    assert "winner/after_qualifying" in second["skipped"]
-    assert second["models"] == {}
+    key = "winner/after_qualifying"
+    assert key in second["skipped"]
+    # The skipped model is reported (so the caller knows which bundle is
+    # current) but it is not retrained: the version is unchanged.
+    assert second["models"][key]["skipped"] is True
+    assert second["models"][key]["version"] == first["models"][key]["version"]
 
 
 def test_train_all_retrains_when_dataset_hash_changes(patched_training):

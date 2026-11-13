@@ -1,15 +1,15 @@
 # Data coverage by source and season
 
-Generated: 2026-11-12T11:49:51+00:00
+Generated: 2026-11-13T13:24:45+00:00
 
 | Season | Scheduled | Results | Result rows | Qualifying | Quali rows | Sprint | Sprint rows | OpenF1 races | FastF1 events |
 |---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 1995 | 17 | 17 | 372 | 17 | 372 | 0 | 0 | — | — |
-| 1996 | 16 | 16 | 303 | 7 | 142 | 0 | 0 | — | — |
-| 1997 | 17 | 17 | 336 | 10 | 190 | 0 | 0 | — | — |
-| 1998 | 16 | 16 | 316 | 7 | 143 | 0 | 0 | — | — |
-| 1999 | 16 | 16 | 316 | 0 | 0 | 0 | 0 | — | — |
-| 2000 | 17 | 17 | 373 | 0 | 0 | 0 | 0 | — | — |
+| 1995 | 17 | 17 | 418 | 17 | 418 | 0 | 0 | — | — |
+| 1996 | 16 | 16 | 328 | 7 | 142 | 0 | 0 | — | — |
+| 1997 | 17 | 17 | 374 | 10 | 210 | 0 | 0 | — | — |
+| 1998 | 16 | 16 | 347 | 7 | 143 | 0 | 0 | — | — |
+| 1999 | 16 | 16 | 351 | 3 | 65 | 0 | 0 | — | — |
+| 2000 | 17 | 17 | 373 | 4 | 88 | 0 | 0 | — | — |
 | 2001 | 17 | 17 | 373 | 0 | 0 | 0 | 0 | — | — |
 | 2002 | 17 | 17 | 359 | 0 | 0 | 0 | 0 | — | — |
 | 2003 | 16 | 16 | 320 | 16 | 320 | 0 | 0 | — | — |
@@ -33,11 +33,13 @@ Generated: 2026-11-12T11:49:51+00:00
 | 2021 | 22 | 22 | 440 | 22 | 439 | 3 | 60 | — | 0 |
 | 2022 | 22 | 22 | 440 | 22 | 440 | 3 | 60 | — | 0 |
 | 2023 | 22 | 22 | 440 | 22 | 440 | 6 | 120 | 22 | 0 |
-| 2024 | 24 | 24 | 403 | 24 | 403 | 6 | 120 | 24 | 0 |
-| 2025 | 24 | 24 | 422 | 24 | 479 | 6 | 120 | 24 | 0 |
-| 2026 | 23 | 20 | 384 | 20 | 395 | 6 | 122 | 23 | 0 |
+| 2024 | 24 | 24 | 479 | 24 | 479 | 6 | 120 | 24 | 0 |
+| 2025 | 24 | 24 | 479 | 24 | 479 | 6 | 120 | 24 | 0 |
+| 2026 | 23 | 20 | 440 | 20 | 435 | 6 | 132 | 23 | 0 |
 
 Notes:
 - Jolpica is the primary historical source; absent seasons/endpoints are never filled with synthetic data.
 - OpenF1 coverage starts in 2023. The collector records which session endpoints are available.
 - FastF1 session loading is optional because it downloads large timing/telemetry datasets.
+- Known Jolpica qualifying gaps: 2001-2002 expose no qualifying; 1996-2000 are partial. Results, grids and standings remain complete from 1995 onward.
+- The 2026 calendar lists 23 rounds; only completed races appear in the results columns. Unraced rounds are not fabricated.

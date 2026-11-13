@@ -206,6 +206,37 @@ dataset hash is unchanged, which avoids unnecessary retraining.
 4. compares the new dataset hash with the previous one;
 5. retrains only when the dataset actually changed (unless `--force`).
 
+## Notebooks
+
+Two notebooks are provided and are already executed in the repository:
+
+- `notebooks/exploratory_analysis.ipynb`: data coverage, missing values,
+  leakage checks, and a detailed 2026 season analysis (driver standings, points
+  evolution, wins/podiums, grid vs finish, position gains, teammate duels,
+  constructor standings, winners timeline, consistency heatmap and
+  season-vs-career comparison).
+- `notebooks/model_comparison.ipynb`: validation model comparisons, test
+  metrics, baselines and feature importance.
+
+Launch JupyterLab from the project root:
+
+```powershell
+.venv\Scripts\python.exe -m jupyter lab
+```
+
+Or execute both notebooks without opening a browser:
+
+```powershell
+.venv\Scripts\python.exe -m jupyter nbconvert --to notebook --execute --inplace notebooks\exploratory_analysis.ipynb
+.venv\Scripts\python.exe -m jupyter nbconvert --to notebook --execute --inplace notebooks\model_comparison.ipynb
+```
+
+The notebooks locate the project root automatically, so they work from either
+the project root or the `notebooks/` directory. The first needs the feature
+dataset (`scripts/build_dataset.py`); the second needs trained models and
+evaluation reports (`scripts/train_all_models.py` and
+`scripts/evaluate_all_models.py`).
+
 ## Tests
 
 ```powershell
@@ -221,6 +252,13 @@ evaluation metrics and winner/podium/classification/championship prediction.
 - OpenF1 starts in 2023 and FastF1 detailed sessions are optional, so recent
   races have more features than older ones. Missing values are imputed by the
   model pipeline; they are not filled with invented history.
+- Jolpica does not expose qualifying for 2001-2002 (0 races) and only partial
+  qualifying for 1996-2000. Mode 2 models therefore rely more heavily on grid
+  position and imputation for those seasons. Results, grids and standings are
+  complete from 1995 onward.
+- The 2026 calendar has 23 scheduled rounds; the dataset contains the 20 races
+  completed up to the 2026 Brazilian Grand Prix. Round 21 (Las Vegas) and later
+  rounds are unraced and are not fabricated.
 - The championship simulator does not model the fastest-lap bonus point and
   uses the same strength scores for sprint and race orders when no separate
   sprint model is supplied.

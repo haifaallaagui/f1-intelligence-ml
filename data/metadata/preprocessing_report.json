@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-11-12T11:48:14+00:00",
+  "built_at": "2026-11-13T13:19:20+00:00",
   "requested_seasons": [
     1995,
     2026
@@ -121,7 +121,7 @@
       }
     },
     "results": {
-      "rows": 12299,
+      "rows": 12808,
       "columns": [
         "race_id",
         "season",
@@ -183,8 +183,8 @@
           "dtype": "str"
         },
         "driver_code": {
-          "missing": 1689,
-          "missing_pct": 13.73,
+          "missing": 1845,
+          "missing_pct": 14.41,
           "dtype": "str"
         },
         "driver_name": {
@@ -248,8 +248,8 @@
           "dtype": "int64"
         },
         "status_id": {
-          "missing": 3147,
-          "missing_pct": 25.59,
+          "missing": 44,
+          "missing_pct": 0.34,
           "dtype": "float64"
         },
         "status": {
@@ -258,28 +258,28 @@
           "dtype": "str"
         },
         "order": {
-          "missing": 3147,
-          "missing_pct": 25.59,
+          "missing": 44,
+          "missing_pct": 0.34,
           "dtype": "float64"
         },
         "fastest_lap_rank": {
-          "missing": 3406,
-          "missing_pct": 27.69,
+          "missing": 3654,
+          "missing_pct": 28.53,
           "dtype": "float64"
         },
         "fastest_lap_lap": {
-          "missing": 3406,
-          "missing_pct": 27.69,
+          "missing": 3654,
+          "missing_pct": 28.53,
           "dtype": "float64"
         },
         "fastest_lap_time": {
-          "missing": 3406,
-          "missing_pct": 27.69,
+          "missing": 3654,
+          "missing_pct": 28.53,
           "dtype": "float64"
         },
         "fastest_lap_speed": {
-          "missing": 4175,
-          "missing_pct": 33.95,
+          "missing": 4569,
+          "missing_pct": 35.67,
           "dtype": "float64"
         },
         "field_size": {
@@ -293,8 +293,8 @@
           "dtype": "str"
         },
         "classified_position": {
-          "missing": 928,
-          "missing_pct": 7.55,
+          "missing": 7,
+          "missing_pct": 0.05,
           "dtype": "float64"
         },
         "finish_position": {
@@ -350,7 +350,7 @@
       }
     },
     "qualifying": {
-      "rows": 10476,
+      "rows": 10926,
       "columns": [
         "race_id",
         "season",
@@ -394,8 +394,8 @@
           "dtype": "str"
         },
         "driver_code": {
-          "missing": 790,
-          "missing_pct": 7.54,
+          "missing": 932,
+          "missing_pct": 8.53,
           "dtype": "str"
         },
         "constructor_id": {
@@ -409,23 +409,23 @@
           "dtype": "int64"
         },
         "q1_seconds": {
-          "missing": 163,
-          "missing_pct": 1.56,
+          "missing": 171,
+          "missing_pct": 1.57,
           "dtype": "float64"
         },
         "q2_seconds": {
-          "missing": 4240,
-          "missing_pct": 40.47,
+          "missing": 4521,
+          "missing_pct": 41.38,
           "dtype": "float64"
         },
         "q3_seconds": {
-          "missing": 6549,
-          "missing_pct": 62.51,
+          "missing": 6864,
+          "missing_pct": 62.82,
           "dtype": "float64"
         },
         "quali_best_seconds": {
-          "missing": 161,
-          "missing_pct": 1.54,
+          "missing": 171,
+          "missing_pct": 1.57,
           "dtype": "float64"
         },
         "quali_reached_q2": {
@@ -444,34 +444,34 @@
           "dtype": "str"
         },
         "quali_gap_to_pole_seconds": {
-          "missing": 161,
-          "missing_pct": 1.54,
+          "missing": 171,
+          "missing_pct": 1.57,
           "dtype": "float64"
         },
         "quali_gap_to_pole_pct": {
-          "missing": 161,
-          "missing_pct": 1.54,
+          "missing": 171,
+          "missing_pct": 1.57,
           "dtype": "float64"
         },
         "teammate_quali_seconds": {
-          "missing": 344,
-          "missing_pct": 3.28,
+          "missing": 218,
+          "missing_pct": 2.0,
           "dtype": "float64"
         },
         "quali_gap_to_teammate_seconds": {
-          "missing": 470,
-          "missing_pct": 4.49,
+          "missing": 338,
+          "missing_pct": 3.09,
           "dtype": "float64"
         },
         "quali_gap_to_teammate_pct": {
-          "missing": 470,
-          "missing_pct": 4.49,
+          "missing": 338,
+          "missing_pct": 3.09,
           "dtype": "float64"
         }
       }
     },
     "sprints": {
-      "rows": 579,
+      "rows": 612,
       "columns": [
         "race_id",
         "season",
@@ -758,7 +758,7 @@
       }
     },
     "driver_standings": {
-      "rows": 10814,
+      "rows": 12156,
       "columns": [
         "season",
         "round",
@@ -807,7 +807,7 @@
       }
     },
     "constructor_standings": {
-      "rows": 5389,
+      "rows": 6036,
       "columns": [
         "season",
         "round",
@@ -1124,25 +1124,25 @@
   "outliers": {
     "results": {
       "finish_position": {
-        "count": 12299,
+        "count": 12808,
         "outliers": 0,
-        "lower_bound": -27.0,
-        "upper_bound": 50.0
+        "lower_bound": -24.0,
+        "upper_bound": 46.0
       },
       "points": {
-        "count": 12299,
-        "outliers": 602,
+        "count": 12808,
+        "outliers": 699,
         "lower_bound": -12.0,
         "upper_bound": 16.0
       },
       "laps": {
-        "count": 12299,
+        "count": 12808,
         "outliers": 0,
-        "lower_bound": -16.0,
-        "upper_bound": 127.5
+        "lower_bound": -18.0,
+        "upper_bound": 129.0
       },
       "grid_position": {
-        "count": 12299,
+        "count": 12808,
         "outliers": 0,
         "lower_bound": -24.0,
         "upper_bound": 46.0
@@ -1150,16 +1150,16 @@
     },
     "qualifying": {
       "quali_best_seconds": {
-        "count": 10315,
-        "outliers": 1,
-        "lower_bound": 26.05649999999997,
-        "upper_bound": 147.21600000000004
+        "count": 10755,
+        "outliers": 2,
+        "lower_bound": 26.691000000000003,
+        "upper_bound": 146.60449999999997
       },
       "quali_gap_to_pole_seconds": {
-        "count": 10315,
-        "outliers": 183,
-        "lower_bound": -4.734499999999983,
-        "upper_bound": 7.882999999999981
+        "count": 10755,
+        "outliers": 204,
+        "lower_bound": -4.6340000000000146,
+        "upper_bound": 7.850500000000011
       }
     }
   },

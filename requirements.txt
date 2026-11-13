@@ -15,5 +15,10 @@ matplotlib>=3.8
 # Testing
 pytest>=8.0
 
+# Notebooks (optional)
+jupyterlab>=4.0
+ipykernel>=6.0
+nbconvert>=7.0
+
 # Optional session-level enrichment (large downloads; install manually if needed)
 # fastf1>=3.3

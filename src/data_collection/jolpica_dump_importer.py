@@ -596,16 +596,75 @@ class JolpicaDumpImporter(BaseCollector):
     # ------------------------------------------------------------------
     @staticmethod
     def _count_existing(path: Path, key: str, subkey: str) -> int:
+        """Count the data rows already stored for a season file.
+
+        Counting only non-empty races is not enough: a race can be present but
+        truncated (for example one result instead of twenty) because of the
+        API's row-based pagination.  Comparing the number of result rows keeps
+        a complete dump from being skipped in favour of a truncated API file.
+        """
         payload = load_json(path, default={}) or {}
         data = payload.get("data", payload) if isinstance(payload, dict) else {}
         races = (data.get("RaceTable", {}) or {}).get("Races", []) or []
-        return sum(1 for race in races if race.get(subkey))
+        total = 0
+        for race in races:
+            value = race.get(subkey)
+            if isinstance(value, (list, tuple)):
+                total += len(value)
+            elif value:
+                total += 1
+        return total
 
     @staticmethod
     def _count_standings(path: Path) -> int:
         payload = load_json(path, default={}) or {}
         data = payload.get("data", payload) if isinstance(payload, dict) else {}
         return len((data.get("StandingsTable", {}) or {}).get("StandingsLists", []) or [])
+
+    @staticmethod
+    def _race_completeness(race: dict[str, Any], subkey: str) -> tuple[int, int]:
+        """Return ``(unique drivers, rows)`` for one race payload.
+
+        A truncated API page can repeat a driver while dropping another one, so
+        the number of rows alone is not a reliable completeness signal.
+        """
+        rows = race.get(subkey, []) or []
+        drivers = {
+            item.get("Driver", {}).get("driverId")
+            for item in rows
+            if item.get("Driver", {}).get("driverId")
+        }
+        return len(drivers), len(rows)
+
+    @classmethod
+    def _merge_races(
+        cls,
+        existing: list[dict[str, Any]],
+        incoming: list[dict[str, Any]],
+        subkey: str,
+    ) -> tuple[list[dict[str, Any]], bool]:
+        """Merge race payloads round by round, keeping the most complete one.
+
+        The dump can lag behind the live API (for example 18 of 20 races) while
+        still being more complete for the races it contains.  A simple row-count
+        comparison would then drop the two most recent races, so races are
+        merged instead: existing rounds are kept unless the incoming payload is
+        more complete for that round, and missing rounds are appended.
+        """
+        by_round: dict[str, dict[str, Any]] = {}
+        for race in existing:
+            by_round[str(race.get("round"))] = race
+        changed = False
+        for race in incoming:
+            round_key = str(race.get("round"))
+            current = by_round.get(round_key)
+            if current is None or cls._race_completeness(
+                race, subkey
+            ) > cls._race_completeness(current, subkey):
+                by_round[round_key] = race
+                changed = True
+        merged = sorted(by_round.values(), key=lambda race: int(race.get("round") or 0))
+        return merged, changed
 
     def _write_season_file(
         self,
@@ -617,8 +676,33 @@ class JolpicaDumpImporter(BaseCollector):
         existing_count: int,
         new_count: int,
         force: bool,
+        merge_key: str | None = None,
     ) -> bool:
-        if path.exists() and not force and existing_count >= new_count:
+        if path.exists() and not force and merge_key is not None:
+            existing_payload = load_json(path, default={}) or {}
+            existing_data = (
+                existing_payload.get("data", existing_payload)
+                if isinstance(existing_payload, dict)
+                else {}
+            )
+            existing_races = (
+                (existing_data.get("RaceTable", {}) or {}).get("Races", []) or []
+            )
+            merged, changed = self._merge_races(
+                existing_races, payload["RaceTable"]["Races"], merge_key
+            )
+            if not changed:
+                return False
+            payload = {
+                "RaceTable": {
+                    **payload["RaceTable"],
+                    "Races": merged,
+                }
+            }
+            new_count = sum(
+                len(race.get(merge_key, []) or []) for race in merged
+            )
+        elif path.exists() and not force and existing_count >= new_count:
             return False
         self.write_json_payload(
             path,
@@ -689,8 +773,9 @@ class JolpicaDumpImporter(BaseCollector):
                 f"/{season}/results",
                 season,
                 existing_count=self._count_existing(season_dir / "results.json", "RaceTable", "Results"),
-                new_count=len(race_payloads),
+                new_count=sum(len(race.get("Results", [])) for race in race_payloads),
                 force=force,
+                merge_key="Results",
             )
             # The dump has incomplete qualifying classifications for 1999-2002.
             # Skip writing in that case so the API collector can fill the gap
@@ -705,8 +790,11 @@ class JolpicaDumpImporter(BaseCollector):
                     existing_count=self._count_existing(
                         season_dir / "qualifying.json", "RaceTable", "QualifyingResults"
                     ),
-                    new_count=len(qualifying_payloads),
+                    new_count=sum(
+                        len(race.get("QualifyingResults", [])) for race in qualifying_payloads
+                    ),
                     force=force,
+                    merge_key="QualifyingResults",
                 )
             else:
                 LOG.warning(
@@ -722,8 +810,11 @@ class JolpicaDumpImporter(BaseCollector):
                     f"/{season}/sprint",
                     season,
                     existing_count=self._count_existing(season_dir / "sprint.json", "RaceTable", "SprintResults"),
-                    new_count=len(sprint_payloads),
+                    new_count=sum(
+                        len(race.get("SprintResults", [])) for race in sprint_payloads
+                    ),
                     force=force,
+                    merge_key="SprintResults",
                 )
             changed |= self._write_season_file(
                 season_dir / "driverstandings.json",

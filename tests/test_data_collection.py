@@ -15,6 +15,7 @@ import requests
 from src.data_collection.base import BaseCollector
 from src.data_collection.fastf1_collector import FastF1Collector
 from src.data_collection.jolpica_collector import JolpicaCollector
+from src.data_collection.jolpica_dump_importer import JolpicaDumpImporter
 from src.data_collection.openf1_collector import OpenF1Collector
 from src.utils import HttpClient, RateLimiter
 
@@ -115,6 +116,129 @@ def test_jolpica_collector_paginates_merges_and_writes_manifest(tmp_path):
     manifest = json.loads((tmp_path / "manifest.json").read_text(encoding="utf-8"))
     assert manifest["source"] == "jolpica"
     assert any(key.endswith("2016/schedule.json") for key in manifest["files"])
+
+
+def _jolpica_truncated_results_handler():
+    """Simulate Jolpica's row-based pagination truncating a race."""
+
+    def handler(url: str, params: dict) -> FakeResponse:
+        path = url.split("/ergast/f1")[-1]
+        if path == "/2016":
+            races = [
+                {"season": "2016", "round": str(round_number), "raceName": f"GP {round_number}"}
+                for round_number in (1, 2, 3)
+            ]
+            return FakeResponse(
+                200,
+                {"MRData": {"total": "3", "RaceTable": {"Races": races}}},
+            )
+        if path == "/2016/results":
+            # 64 rows advertised, but the last race is truncated at 16 rows.
+            races = [
+                {
+                    "season": "2016",
+                    "round": "1",
+                    "Results": [{"driverId": f"a{i}"} for i in range(22)],
+                },
+                {
+                    "season": "2016",
+                    "round": "2",
+                    "Results": [{"driverId": f"b{i}"} for i in range(22)],
+                },
+                {
+                    "season": "2016",
+                    "round": "3",
+                    "Results": [{"driverId": f"c{i}"} for i in range(16)],
+                },
+            ]
+            return FakeResponse(
+                200,
+                {"MRData": {"total": "64", "RaceTable": {"Races": races}}},
+            )
+        if path.startswith("/2016/") and path.endswith("/results"):
+            round_number = path.split("/")[2]
+            # Same driver identifiers as the truncated season payload so the
+            # merged race is completed rather than duplicated.
+            prefix = "c" if round_number == "3" else f"r{round_number}_"
+            return FakeResponse(
+                200,
+                {
+                    "MRData": {
+                        "total": "20",
+                        "RaceTable": {
+                            "Races": [
+                                {
+                                    "season": "2016",
+                                    "round": round_number,
+                                    "Results": [
+                                        {"driverId": f"{prefix}{i}"} for i in range(20)
+                                    ],
+                                }
+                            ]
+                        },
+                    }
+                },
+            )
+        return FakeResponse(200, {"MRData": {"total": "0", "RaceTable": {"Races": []}}})
+
+    return handler
+
+
+def test_jolpica_collector_refetches_races_truncated_by_pagination(tmp_path):
+    session = FakeSession(_jolpica_truncated_results_handler())
+    collector = JolpicaCollector(raw_dir=tmp_path, http=_http(session))
+
+    collector.collect(seasons=[2016], include_reference=False)
+
+    results = collector.read_json_payload(tmp_path / "2016" / "results.json")
+    by_round = {race["round"]: race for race in results["RaceTable"]["Races"]}
+    assert len(by_round["3"]["Results"]) == 20
+    assert any(url.endswith("/2016/3/results") for url, _ in session.calls)
+
+
+def test_dump_importer_counts_rows_not_only_races(tmp_path):
+    # A season file can contain every race but a truncated race result.  The
+    # importer must compare row counts so a complete dump replaces it.
+    path = tmp_path / "results.json"
+    payload = {
+        "data": {
+            "RaceTable": {
+                "Races": [
+                    {"round": "1", "Results": [{"position": "1"}, {"position": "2"}]},
+                    {"round": "2", "Results": [{"position": "1"}]},
+                ]
+            }
+        }
+    }
+    path.write_text(json.dumps(payload), encoding="utf-8")
+
+    count = JolpicaDumpImporter._count_existing(path, "RaceTable", "Results")
+
+    assert count == 3
+
+
+def test_dump_importer_merges_rounds_and_keeps_more_complete_rows():
+    existing = [
+        {"round": "18", "Results": [{"position": str(i)} for i in range(20)]},
+        {"round": "19", "Results": [{"position": "1"}]},
+        {"round": "20", "Results": [{"position": str(i)} for i in range(20)]},
+    ]
+    incoming = [
+        {"round": "18", "Results": [{"position": "1"}]},
+        {"round": "19", "Results": [{"position": str(i)} for i in range(20)]},
+    ]
+
+    merged, changed = JolpicaDumpImporter._merge_races(existing, incoming, "Results")
+
+    assert changed
+    by_round = {race["round"]: race for race in merged}
+    assert [race["round"] for race in merged] == ["18", "19", "20"]
+    # Round 18 keeps the more complete existing payload.
+    assert len(by_round["18"]["Results"]) == 20
+    # Round 19 is upgraded by the dump.
+    assert len(by_round["19"]["Results"]) == 20
+    # Round 20 only exists in the live API payload and is preserved.
+    assert len(by_round["20"]["Results"]) == 20
 
 
 def test_jolpica_collector_skips_existing_season_files(tmp_path):

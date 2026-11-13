@@ -141,25 +141,46 @@ class JolpicaCollector(BaseCollector):
         Jolpica paginates *result rows*, but every page restarts at the first
         result of a race.  A race that straddles a page boundary is therefore
         returned truncated on both pages and can never be completed by
-        ``offset`` pagination alone (e.g. 1 finisher instead of 22).  When the
-        merged season contains fewer rows than the advertised total we
-        re-fetch each round individually, which is exact.
+        ``offset`` pagination alone (e.g. 1 finisher instead of 22).  Only the
+        affected rounds are re-fetched individually: re-fetching every round
+        would exhaust the API's hourly request quota for no benefit.
         """
         pages = self._fetch_mrdata(f"/{season}/{endpoint}")
         merged = self._merge_races(pages, result_key, "driverId")
-        expected = int(pages[0].get("total", 0) or 0) if pages else 0
-        rows = sum(
-            len(race.get(result_key, []) or [])
+        known_rounds = {int(round_number) for round_number in rounds}
+        row_counts = {
+            int(race.get("round", 0) or 0): len(race.get(result_key, []) or [])
             for race in merged["RaceTable"]["Races"]
+            if int(race.get("round", 0) or 0) in known_rounds
+        }
+        expected = int(pages[0].get("total", 0) or 0) if pages else 0
+        rows = sum(row_counts.values())
+        typical = max(row_counts.values(), default=0)
+        truncated = (
+            sorted(round_number for round_number, count in row_counts.items() if count < typical)
+            if expected and rows < expected
+            else []
         )
-        if rounds and rows < expected:
+        if truncated:
+            self.log.info(
+                "Jolpica %s/%s: re-fetching truncated rounds %s",
+                season,
+                endpoint,
+                truncated,
+            )
             per_round: list[dict[str, Any]] = []
-            for round_number in rounds:
+            for round_number in truncated:
                 per_round.extend(
                     self._fetch_mrdata(f"/{season}/{round_number}/{endpoint}")
                 )
-            merged = self._merge_races(per_round, result_key, "driverId")
-            pages = per_round
+            # Keep every race from the season query and overlay the complete
+            # per-round payloads for the truncated rounds.
+            combined: list[dict[str, Any]] = [
+                {"RaceTable": {"Races": merged["RaceTable"]["Races"]}},
+                *per_round,
+            ]
+            merged = self._merge_races(combined, result_key, "driverId")
+            pages = combined
         return merged, len(pages)
 
     def _merge_standings(self, pages: Iterable[dict[str, Any]], key: str, id_key: str) -> dict[str, Any]:

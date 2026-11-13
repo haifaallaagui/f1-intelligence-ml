@@ -333,6 +333,8 @@ def train_all(
                 "candidate_count": len(candidates),
                 "temperature": temperature,
                 "bundle": str(bundle),
+                "version": version,
+                "skipped": False,
             }
             LOG.info(
                 "Trained %s -> %s (validation score %.4f)",
@@ -418,6 +420,8 @@ def train_all(
                         "validation_score": best.score,
                         "candidate_count": len(candidates),
                         "bundle": str(bundle),
+                        "version": version,
+                        "skipped": False,
                     }
                     LOG.info(
                         "Trained %s -> %s (validation score %.4f)",
