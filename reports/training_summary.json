@@ -1,30 +1,28 @@
 {
-  "version": "20261112T121502Z",
-  "started_at": "2026-11-12T12:15:02+00:00",
-  "dataset_hash": "e92f16a6fecd4c2b4675172e",
-  "n_iter": 3,
+  "version": "20261113T132338Z",
+  "started_at": "2026-11-13T13:23:38+00:00",
+  "dataset_hash": "1a6289acbd046f888f41f954",
+  "n_iter": 8,
   "models": {
     "winner/before_qualifying": {
       "algorithm": "catboost",
       "params": {
-        "iterations": 400,
-        "depth": 6,
-        "learning_rate": 0.03
+        "iterations": 250,
+        "depth": 8,
+        "learning_rate": 0.05
       },
       "validation_metrics": {
-        "log_loss": 0.11896800918647829,
-        "brier": 0.03367651173360489,
+        "log_loss": 0.11810820190055873,
+        "brier": 0.0339497848171154,
         "n_rows": 1200,
-        "accuracy": 0.48333333333333334,
+        "accuracy": 0.5166666666666667,
         "top3_hit_rate": 0.8,
         "n_races": 60
       },
-      "validation_score": -0.11896800918647829,
-      "candidate_count": 18,
+      "validation_score": -0.11810820190055873,
+      "candidate_count": 24,
       "temperature": null,
-      "bundle": "C:\\Users\\haifa\\Documents\\Projet par défaut\\f1-intelligence-ml\\models\\winner\\before_qualifying\\best.joblib",
-      "version": "20261112T115006Z",
-      "skipped": true
+      "bundle": "C:\\Users\\haifa\\Documents\\Projet par défaut\\f1-intelligence-ml\\models\\winner\\before_qualifying\\best.joblib"
     },
     "podium/before_qualifying": {
       "algorithm": "catboost",
@@ -34,24 +32,71 @@
         "learning_rate": 0.03
       },
       "validation_metrics": {
-        "log_loss": 0.24328599592572597,
-        "brier": 0.07330827121235439,
+        "log_loss": 0.24139053175386518,
+        "brier": 0.07247178882893375,
         "n_rows": 1200,
-        "precision": 0.661111111111111,
-        "recall": 0.661111111111111,
-        "f1": 0.661111111111111,
-        "exact_set_accuracy": 0.2833333333333333,
+        "precision": 0.6666666666666665,
+        "recall": 0.6666666666666665,
+        "f1": 0.6666666666666665,
+        "exact_set_accuracy": 0.3,
         "n_races": 60
       },
-      "validation_score": -0.24328599592572597,
-      "candidate_count": 18,
+      "validation_score": -0.24139053175386518,
+      "candidate_count": 24,
       "temperature": null,
-      "bundle": "C:\\Users\\haifa\\Documents\\Projet par défaut\\f1-intelligence-ml\\models\\podium\\before_qualifying\\best.joblib",
-      "version": "20261112T115006Z",
-      "skipped": true
+      "bundle": "C:\\Users\\haifa\\Documents\\Projet par défaut\\f1-intelligence-ml\\models\\podium\\before_qualifying\\best.joblib"
     },
     "classification/before_qualifying": {
-      "algorithm": "xgboost_ranker",
+      "algorithm": "lightgbm_ranker",
+      "params": {
+        "n_estimators": 300,
+        "num_leaves": 15,
+        "learning_rate": 0.03,
+        "min_child_samples": 20
+      },
+      "validation_metrics": {
+        "mae": 3.695,
+        "rmse": 5.1070213105749485,
+        "r2": 0.21558897243107766,
+        "n_rows": 1200,
+        "mae_classified": 3.695,
+        "rmse_classified": 5.1070213105749485,
+        "spearman": 0.6077944862155389,
+        "ndcg_at_10": 0.7830546116613554,
+        "ranking_accuracy": 0.7412280701754385,
+        "top1_accuracy": 0.38333333333333336,
+        "podium_precision_at_3": 0.6666666666666666,
+        "n_races": 60
+      },
+      "validation_score": -3.695,
+      "candidate_count": 12,
+      "temperature": 0.6,
+      "bundle": "C:\\Users\\haifa\\Documents\\Projet par défaut\\f1-intelligence-ml\\models\\classification\\before_qualifying\\best.joblib"
+    },
+    "driver_performance/before_qualifying": {
+      "algorithm": "lightgbm",
+      "params": {
+        "n_estimators": 250,
+        "num_leaves": 15,
+        "learning_rate": 0.1,
+        "min_child_samples": 30
+      },
+      "validation_metrics": {
+        "finish_mae": 3.62028268163976,
+        "finish_rmse": 4.55806491081574,
+        "finish_r2": 0.3751592261290315,
+        "points_mae": 3.546136231663425,
+        "points_rmse": 5.209229169343662,
+        "points_r2": 0.48082507083686954,
+        "n_rows": 1200
+      },
+      "validation_score": -3.62028268163976,
+      "candidate_count": 16,
+      "temperature": null,
+      "bundle": "C:\\Users\\haifa\\Documents\\Projet par défaut\\f1-intelligence-ml\\models\\driver_performance\\before_qualifying\\best.joblib"
+    },
+    "winner/after_qualifying": {
+      "algorithm": "xgboost",
       "params": {
         "n_estimators": 300,
         "max_depth": 3,
@@ -60,71 +105,17 @@
         "colsample_bytree": 0.85
       },
       "validation_metrics": {
-        "mae": 3.658333333333333,
-        "rmse": 5.08707512558379,
-        "r2": 0.22170426065162907,
+        "log_loss": 0.10634644541654809,
+        "brier": 0.030561483128007248,
         "n_rows": 1200,
-        "mae_classified": 3.658333333333333,
-        "rmse_classified": 5.08707512558379,
-        "spearman": 0.6108521303258143,
-        "ndcg_at_10": 0.8076260133785119,
-        "ranking_accuracy": 0.7432456140350877,
-        "top1_accuracy": 0.4666666666666667,
-        "podium_precision_at_3": 0.6777777777777776,
+        "accuracy": 0.55,
+        "top3_hit_rate": 0.8833333333333333,
         "n_races": 60
       },
-      "validation_score": -3.658333333333333,
-      "candidate_count": 9,
-      "temperature": 0.6,
-      "bundle": "C:\\Users\\haifa\\Documents\\Projet par défaut\\f1-intelligence-ml\\models\\classification\\before_qualifying\\best.joblib",
-      "version": "20261112T121011Z",
-      "skipped": true
-    },
-    "driver_performance/before_qualifying": {
-      "algorithm": "hist_gradient_boosting",
-      "params": {
-        "learning_rate": 0.03,
-        "max_iter": 300,
-        "max_leaf_nodes": 15,
-        "l2_regularization": 0.1
-      },
-      "validation_metrics": {
-        "finish_mae": 3.6034913323037645,
-        "finish_rmse": 4.544829124519124,
-        "finish_r2": 0.3787828038773755,
-        "points_mae": 3.505841823253037,
-        "points_rmse": 5.205839112301474,
-        "points_r2": 0.48150058726027434,
-        "n_rows": 1200
-      },
-      "validation_score": -3.6034913323037645,
-      "candidate_count": 12,
+      "validation_score": -0.10634644541654809,
+      "candidate_count": 24,
       "temperature": null,
-      "bundle": "C:\\Users\\haifa\\Documents\\Projet par défaut\\f1-intelligence-ml\\models\\driver_performance\\before_qualifying\\best.joblib",
-      "version": "20261112T115006Z",
-      "skipped": true
-    },
-    "winner/after_qualifying": {
-      "algorithm": "catboost",
-      "params": {
-        "iterations": 300,
-        "depth": 4,
-        "learning_rate": 0.03
-      },
-      "validation_metrics": {
-        "log_loss": 0.10636098690506932,
-        "brier": 0.030954657590460264,
-        "n_rows": 1200,
-        "accuracy": 0.5166666666666667,
-        "top3_hit_rate": 0.9,
-        "n_races": 60
-      },
-      "validation_score": -0.10636098690506932,
-      "candidate_count": 18,
-      "temperature": null,
-      "bundle": "C:\\Users\\haifa\\Documents\\Projet par défaut\\f1-intelligence-ml\\models\\winner\\after_qualifying\\best.joblib",
-      "version": "20261112T115006Z",
-      "skipped": true
+      "bundle": "C:\\Users\\haifa\\Documents\\Projet par défaut\\f1-intelligence-ml\\models\\winner\\after_qualifying\\best.joblib"
     },
     "podium/after_qualifying": {
       "algorithm": "catboost",
@@ -134,21 +125,19 @@
         "learning_rate": 0.03
       },
       "validation_metrics": {
-        "log_loss": 0.21411040164628137,
-        "brier": 0.06279475185398176,
+        "log_loss": 0.2085507757458842,
+        "brier": 0.061525552220228194,
         "n_rows": 1200,
-        "precision": 0.7166666666666667,
-        "recall": 0.7166666666666667,
-        "f1": 0.7166666666666667,
+        "precision": 0.711111111111111,
+        "recall": 0.711111111111111,
+        "f1": 0.711111111111111,
         "exact_set_accuracy": 0.36666666666666664,
         "n_races": 60
       },
-      "validation_score": -0.21411040164628137,
-      "candidate_count": 18,
+      "validation_score": -0.2085507757458842,
+      "candidate_count": 24,
       "temperature": null,
-      "bundle": "C:\\Users\\haifa\\Documents\\Projet par défaut\\f1-intelligence-ml\\models\\podium\\after_qualifying\\best.joblib",
-      "version": "20261112T115006Z",
-      "skipped": true
+      "bundle": "C:\\Users\\haifa\\Documents\\Projet par défaut\\f1-intelligence-ml\\models\\podium\\after_qualifying\\best.joblib"
     },
     "classification/after_qualifying": {
       "algorithm": "xgboost_ranker",
@@ -160,51 +149,25 @@
         "colsample_bytree": 0.85
       },
       "validation_metrics": {
-        "mae": 3.3383333333333334,
-        "rmse": 4.768997099321128,
-        "r2": 0.3159899749373434,
+        "mae": 3.361666666666667,
+        "rmse": 4.81525354126516,
+        "r2": 0.30265664160401007,
         "n_rows": 1200,
-        "mae_classified": 3.3383333333333334,
-        "rmse_classified": 4.768997099321128,
-        "spearman": 0.6579949874686718,
-        "ndcg_at_10": 0.8330020187865049,
-        "ranking_accuracy": 0.7689473684210526,
-        "top1_accuracy": 0.5166666666666667,
+        "mae_classified": 3.361666666666667,
+        "rmse_classified": 4.81525354126516,
+        "spearman": 0.6513283208020049,
+        "ndcg_at_10": 0.8278729894815755,
+        "ranking_accuracy": 0.7650877192982456,
+        "top1_accuracy": 0.48333333333333334,
         "podium_precision_at_3": 0.7222222222222221,
         "n_races": 60
       },
-      "validation_score": -3.3383333333333334,
-      "candidate_count": 9,
+      "validation_score": -3.361666666666667,
+      "candidate_count": 12,
       "temperature": 0.6,
-      "bundle": "C:\\Users\\haifa\\Documents\\Projet par défaut\\f1-intelligence-ml\\models\\classification\\after_qualifying\\best.joblib",
-      "version": "20261112T121011Z",
-      "skipped": true
+      "bundle": "C:\\Users\\haifa\\Documents\\Projet par défaut\\f1-intelligence-ml\\models\\classification\\after_qualifying\\best.joblib"
     },
     "driver_performance/after_qualifying": {
-      "algorithm": "hist_gradient_boosting",
-      "params": {
-        "learning_rate": 0.03,
-        "max_iter": 300,
-        "max_leaf_nodes": 15,
-        "l2_regularization": 0.1
-      },
-      "validation_metrics": {
-        "finish_mae": 3.3579060313522224,
-        "finish_rmse": 4.321361038200976,
-        "finish_r2": 0.4383710910531905,
-        "points_mae": 3.1689786306989745,
-        "points_rmse": 4.810282646408234,
-        "points_r2": 0.5573015755796138,
-        "n_rows": 1200
-      },
-      "validation_score": -3.3579060313522224,
-      "candidate_count": 12,
-      "temperature": null,
-      "bundle": "C:\\Users\\haifa\\Documents\\Projet par défaut\\f1-intelligence-ml\\models\\driver_performance\\after_qualifying\\best.joblib",
-      "version": "20261112T115006Z",
-      "skipped": true
-    },
-    "constructor_performance": {
       "algorithm": "lightgbm",
       "params": {
         "n_estimators": 300,
@@ -213,32 +176,40 @@
         "min_child_samples": 20
       },
       "validation_metrics": {
-        "points_mae": 5.202209433575049,
-        "points_rmse": 7.719639636444698,
-        "points_r2": 0.6201966862618296,
-        "best_finish_mae": 2.503977028354694,
-        "best_finish_rmse": 3.3360307968745753,
-        "best_finish_r2": 0.5777232915694757,
+        "finish_mae": 3.3544412977533655,
+        "finish_rmse": 4.315377715282251,
+        "finish_r2": 0.4399252684043712,
+        "points_mae": 3.161942875326149,
+        "points_rmse": 4.798752337238488,
+        "points_r2": 0.5594213395775345,
+        "n_rows": 1200
+      },
+      "validation_score": -3.3544412977533655,
+      "candidate_count": 16,
+      "temperature": null,
+      "bundle": "C:\\Users\\haifa\\Documents\\Projet par défaut\\f1-intelligence-ml\\models\\driver_performance\\after_qualifying\\best.joblib"
+    },
+    "constructor_performance": {
+      "algorithm": "random_forest",
+      "params": {
+        "n_estimators": 300,
+        "max_depth": 12,
+        "min_samples_leaf": 10
+      },
+      "validation_metrics": {
+        "points_mae": 5.1767682810420235,
+        "points_rmse": 7.61889684582288,
+        "points_r2": 0.6300450163249889,
+        "best_finish_mae": 2.4898870359298626,
+        "best_finish_rmse": 3.313361665372835,
+        "best_finish_r2": 0.5834427363814928,
         "n_rows": 600
       },
-      "validation_score": -5.202209433575049,
-      "candidate_count": 12,
-      "temperature": null,
-      "bundle": "C:\\Users\\haifa\\Documents\\Projet par défaut\\f1-intelligence-ml\\models\\constructor_performance\\best.joblib",
-      "version": "20261112T115006Z",
-      "skipped": true
+      "validation_score": -5.1767682810420235,
+      "candidate_count": 16,
+      "bundle": "C:\\Users\\haifa\\Documents\\Projet par défaut\\f1-intelligence-ml\\models\\constructor_performance\\best.joblib"
     }
   },
-  "skipped": [
-    "winner/before_qualifying",
-    "podium/before_qualifying",
-    "classification/before_qualifying",
-    "driver_performance/before_qualifying",
-    "winner/after_qualifying",
-    "podium/after_qualifying",
-    "classification/after_qualifying",
-    "driver_performance/after_qualifying",
-    "constructor_performance"
-  ],
-  "finished_at": "2026-11-12T12:15:02+00:00"
+  "skipped": [],
+  "finished_at": "2026-11-13T13:40:09+00:00"
 }
