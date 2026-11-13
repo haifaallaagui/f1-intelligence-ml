@@ -1,0 +1,13 @@
+{
+  "finished_at": "2026-11-12T11:42:12+00:00",
+  "source": "openf1",
+  "seasons": [
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "sessions_collected": 93,
+  "files_written": 679,
+  "errors": 18
+}

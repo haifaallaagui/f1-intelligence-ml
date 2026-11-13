@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Data and model artefacts (reproducible from the collectors/training pipeline)
+data/raw/
+data/processed/
+data/datasets/
+models/
+predictions/
+
+# Keep the reports and metadata by default
+!reports/
+!data/metadata/
+
+# FastF1 cache
+data/raw/fastf1/cache/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log

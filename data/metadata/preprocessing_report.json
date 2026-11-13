@@ -1,0 +1,1171 @@
+{
+  "built_at": "2026-11-12T11:48:14+00:00",
+  "requested_seasons": [
+    1995,
+    2026
+  ],
+  "tables": {
+    "races": {
+      "rows": 608,
+      "columns": [
+        "season",
+        "round",
+        "race_id",
+        "race_name",
+        "race_date",
+        "race_time",
+        "circuit_id",
+        "circuit_name",
+        "locality",
+        "country",
+        "latitude",
+        "longitude",
+        "altitude",
+        "race_url",
+        "source",
+        "total_rounds",
+        "race_datetime",
+        "is_sprint_weekend"
+      ],
+      "missing": {
+        "season": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "round": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "race_id": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "race_name": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "race_date": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "datetime64[us]"
+        },
+        "race_time": {
+          "missing": 515,
+          "missing_pct": 84.7,
+          "dtype": "str"
+        },
+        "circuit_id": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "circuit_name": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "locality": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "country": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "latitude": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "float64"
+        },
+        "longitude": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "float64"
+        },
+        "altitude": {
+          "missing": 175,
+          "missing_pct": 28.78,
+          "dtype": "float64"
+        },
+        "race_url": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "source": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "total_rounds": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "race_datetime": {
+          "missing": 93,
+          "missing_pct": 15.3,
+          "dtype": "datetime64[us, UTC]"
+        },
+        "is_sprint_weekend": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "bool"
+        }
+      }
+    },
+    "results": {
+      "rows": 12299,
+      "columns": [
+        "race_id",
+        "season",
+        "round",
+        "driver_id",
+        "driver_code",
+        "driver_name",
+        "driver_dob",
+        "driver_nationality",
+        "constructor_id",
+        "constructor_name",
+        "grid_raw",
+        "position_raw",
+        "position_text",
+        "classified",
+        "is_dnf",
+        "points",
+        "laps",
+        "status_id",
+        "status",
+        "order",
+        "fastest_lap_rank",
+        "fastest_lap_lap",
+        "fastest_lap_time",
+        "fastest_lap_speed",
+        "field_size",
+        "source",
+        "classified_position",
+        "finish_position",
+        "grid_position",
+        "position_gain",
+        "win",
+        "podium",
+        "top10",
+        "fastest_lap",
+        "race_points",
+        "sprint_points",
+        "total_points"
+      ],
+      "missing": {
+        "race_id": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "season": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "round": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "driver_id": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "driver_code": {
+          "missing": 1689,
+          "missing_pct": 13.73,
+          "dtype": "str"
+        },
+        "driver_name": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "driver_dob": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "driver_nationality": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "constructor_id": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "constructor_name": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "grid_raw": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "position_raw": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "position_text": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "classified": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "bool"
+        },
+        "is_dnf": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "bool"
+        },
+        "points": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "float64"
+        },
+        "laps": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "status_id": {
+          "missing": 3147,
+          "missing_pct": 25.59,
+          "dtype": "float64"
+        },
+        "status": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "order": {
+          "missing": 3147,
+          "missing_pct": 25.59,
+          "dtype": "float64"
+        },
+        "fastest_lap_rank": {
+          "missing": 3406,
+          "missing_pct": 27.69,
+          "dtype": "float64"
+        },
+        "fastest_lap_lap": {
+          "missing": 3406,
+          "missing_pct": 27.69,
+          "dtype": "float64"
+        },
+        "fastest_lap_time": {
+          "missing": 3406,
+          "missing_pct": 27.69,
+          "dtype": "float64"
+        },
+        "fastest_lap_speed": {
+          "missing": 4175,
+          "missing_pct": 33.95,
+          "dtype": "float64"
+        },
+        "field_size": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "source": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "classified_position": {
+          "missing": 928,
+          "missing_pct": 7.55,
+          "dtype": "float64"
+        },
+        "finish_position": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "float64"
+        },
+        "grid_position": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "position_gain": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "float64"
+        },
+        "win": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "podium": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "top10": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "fastest_lap": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "race_points": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "float64"
+        },
+        "sprint_points": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "float64"
+        },
+        "total_points": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "float64"
+        }
+      }
+    },
+    "qualifying": {
+      "rows": 10476,
+      "columns": [
+        "race_id",
+        "season",
+        "round",
+        "driver_id",
+        "driver_code",
+        "constructor_id",
+        "quali_position",
+        "q1_seconds",
+        "q2_seconds",
+        "q3_seconds",
+        "quali_best_seconds",
+        "quali_reached_q2",
+        "quali_reached_q3",
+        "source",
+        "quali_gap_to_pole_seconds",
+        "quali_gap_to_pole_pct",
+        "teammate_quali_seconds",
+        "quali_gap_to_teammate_seconds",
+        "quali_gap_to_teammate_pct"
+      ],
+      "missing": {
+        "race_id": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "season": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "round": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "driver_id": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "driver_code": {
+          "missing": 790,
+          "missing_pct": 7.54,
+          "dtype": "str"
+        },
+        "constructor_id": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "quali_position": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "q1_seconds": {
+          "missing": 163,
+          "missing_pct": 1.56,
+          "dtype": "float64"
+        },
+        "q2_seconds": {
+          "missing": 4240,
+          "missing_pct": 40.47,
+          "dtype": "float64"
+        },
+        "q3_seconds": {
+          "missing": 6549,
+          "missing_pct": 62.51,
+          "dtype": "float64"
+        },
+        "quali_best_seconds": {
+          "missing": 161,
+          "missing_pct": 1.54,
+          "dtype": "float64"
+        },
+        "quali_reached_q2": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "quali_reached_q3": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "source": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "quali_gap_to_pole_seconds": {
+          "missing": 161,
+          "missing_pct": 1.54,
+          "dtype": "float64"
+        },
+        "quali_gap_to_pole_pct": {
+          "missing": 161,
+          "missing_pct": 1.54,
+          "dtype": "float64"
+        },
+        "teammate_quali_seconds": {
+          "missing": 344,
+          "missing_pct": 3.28,
+          "dtype": "float64"
+        },
+        "quali_gap_to_teammate_seconds": {
+          "missing": 470,
+          "missing_pct": 4.49,
+          "dtype": "float64"
+        },
+        "quali_gap_to_teammate_pct": {
+          "missing": 470,
+          "missing_pct": 4.49,
+          "dtype": "float64"
+        }
+      }
+    },
+    "sprints": {
+      "rows": 579,
+      "columns": [
+        "race_id",
+        "season",
+        "round",
+        "driver_id",
+        "constructor_id",
+        "sprint_position",
+        "sprint_position_text",
+        "sprint_classified",
+        "sprint_dnf",
+        "sprint_points",
+        "sprint_grid",
+        "sprint_laps",
+        "sprint_status",
+        "sprint_field_size",
+        "source",
+        "sprint_position_gain"
+      ],
+      "missing": {
+        "race_id": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "season": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "round": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "driver_id": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "constructor_id": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "sprint_position": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "sprint_position_text": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "sprint_classified": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "bool"
+        },
+        "sprint_dnf": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "bool"
+        },
+        "sprint_points": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "float64"
+        },
+        "sprint_grid": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "sprint_laps": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "sprint_status": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "sprint_field_size": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "source": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "sprint_position_gain": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        }
+      }
+    },
+    "drivers": {
+      "rows": 885,
+      "columns": [
+        "driver_id",
+        "driver_code",
+        "given_name",
+        "family_name",
+        "driver_name",
+        "date_of_birth",
+        "nationality",
+        "permanent_number",
+        "url",
+        "source"
+      ],
+      "missing": {
+        "driver_id": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "driver_code": {
+          "missing": 776,
+          "missing_pct": 87.68,
+          "dtype": "str"
+        },
+        "given_name": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "family_name": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "driver_name": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "date_of_birth": {
+          "missing": 18,
+          "missing_pct": 2.03,
+          "dtype": "str"
+        },
+        "nationality": {
+          "missing": 18,
+          "missing_pct": 2.03,
+          "dtype": "str"
+        },
+        "permanent_number": {
+          "missing": 820,
+          "missing_pct": 92.66,
+          "dtype": "float64"
+        },
+        "url": {
+          "missing": 18,
+          "missing_pct": 2.03,
+          "dtype": "str"
+        },
+        "source": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        }
+      }
+    },
+    "constructors": {
+      "rows": 214,
+      "columns": [
+        "constructor_id",
+        "constructor_name",
+        "constructor_nationality",
+        "constructor_url",
+        "source"
+      ],
+      "missing": {
+        "constructor_id": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "constructor_name": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "constructor_nationality": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "constructor_url": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "source": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        }
+      }
+    },
+    "circuits": {
+      "rows": 78,
+      "columns": [
+        "circuit_id",
+        "circuit_name",
+        "circuit_url",
+        "locality",
+        "country",
+        "latitude",
+        "longitude",
+        "altitude",
+        "source"
+      ],
+      "missing": {
+        "circuit_id": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "circuit_name": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "circuit_url": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "locality": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "country": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "latitude": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "float64"
+        },
+        "longitude": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "float64"
+        },
+        "altitude": {
+          "missing": 78,
+          "missing_pct": 100.0,
+          "dtype": "float64"
+        },
+        "source": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        }
+      }
+    },
+    "status": {
+      "rows": 136,
+      "columns": [
+        "status_id",
+        "status"
+      ],
+      "missing": {
+        "status_id": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "status": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        }
+      }
+    },
+    "driver_standings": {
+      "rows": 10814,
+      "columns": [
+        "season",
+        "round",
+        "driver_id",
+        "standing_position",
+        "standing_points",
+        "standing_wins",
+        "source"
+      ],
+      "missing": {
+        "season": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "round": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "driver_id": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "standing_position": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "standing_points": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "float64"
+        },
+        "standing_wins": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "source": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        }
+      }
+    },
+    "constructor_standings": {
+      "rows": 5389,
+      "columns": [
+        "season",
+        "round",
+        "constructor_id",
+        "standing_position",
+        "standing_points",
+        "standing_wins",
+        "source"
+      ],
+      "missing": {
+        "season": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "round": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "constructor_id": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "standing_position": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "standing_points": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "float64"
+        },
+        "standing_wins": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "source": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        }
+      }
+    },
+    "openf1_race_summary": {
+      "rows": 92,
+      "columns": [
+        "race_id",
+        "season",
+        "round",
+        "openf1_session_key",
+        "openf1_meeting_key",
+        "openf1_circuit_key",
+        "openf1_circuit_short_name",
+        "openf1_circuit_type",
+        "openf1_location",
+        "openf1_country",
+        "openf1_session_date",
+        "weather_air_temp_mean",
+        "weather_track_temp_mean",
+        "weather_humidity_mean",
+        "weather_wind_mean",
+        "weather_rainfall_mean",
+        "weather_rainfall_max",
+        "race_control_safety_car_messages",
+        "race_control_red_flags",
+        "openf1_has_weather",
+        "openf1_has_laps",
+        "openf1_has_pit",
+        "openf1_has_stints",
+        "openf1_source"
+      ],
+      "missing": {
+        "race_id": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "season": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "round": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "openf1_session_key": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "openf1_meeting_key": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "openf1_circuit_key": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "openf1_circuit_short_name": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "openf1_circuit_type": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "openf1_location": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "openf1_country": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "openf1_session_date": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "weather_air_temp_mean": {
+          "missing": 3,
+          "missing_pct": 3.26,
+          "dtype": "float64"
+        },
+        "weather_track_temp_mean": {
+          "missing": 3,
+          "missing_pct": 3.26,
+          "dtype": "float64"
+        },
+        "weather_humidity_mean": {
+          "missing": 3,
+          "missing_pct": 3.26,
+          "dtype": "float64"
+        },
+        "weather_wind_mean": {
+          "missing": 3,
+          "missing_pct": 3.26,
+          "dtype": "float64"
+        },
+        "weather_rainfall_mean": {
+          "missing": 3,
+          "missing_pct": 3.26,
+          "dtype": "float64"
+        },
+        "weather_rainfall_max": {
+          "missing": 3,
+          "missing_pct": 3.26,
+          "dtype": "float64"
+        },
+        "race_control_safety_car_messages": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "race_control_red_flags": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "openf1_has_weather": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "openf1_has_laps": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "openf1_has_pit": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "openf1_has_stints": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "openf1_source": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        }
+      }
+    },
+    "openf1_driver_race_summary": {
+      "rows": 1815,
+      "columns": [
+        "race_id",
+        "season",
+        "round",
+        "driver_id",
+        "openf1_driver_number",
+        "openf1_laps_completed",
+        "openf1_mean_lap_seconds",
+        "openf1_lap_std_seconds",
+        "openf1_best_lap_seconds",
+        "openf1_pit_stops",
+        "openf1_mean_pit_seconds",
+        "openf1_mean_stint_laps",
+        "openf1_compounds",
+        "openf1_start_position",
+        "openf1_end_position",
+        "openf1_position_changes",
+        "openf1_source"
+      ],
+      "missing": {
+        "race_id": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "season": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "round": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "driver_id": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "openf1_driver_number": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "openf1_laps_completed": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "openf1_mean_lap_seconds": {
+          "missing": 46,
+          "missing_pct": 2.53,
+          "dtype": "float64"
+        },
+        "openf1_lap_std_seconds": {
+          "missing": 46,
+          "missing_pct": 2.53,
+          "dtype": "float64"
+        },
+        "openf1_best_lap_seconds": {
+          "missing": 46,
+          "missing_pct": 2.53,
+          "dtype": "float64"
+        },
+        "openf1_pit_stops": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "openf1_mean_pit_seconds": {
+          "missing": 213,
+          "missing_pct": 11.74,
+          "dtype": "float64"
+        },
+        "openf1_mean_stint_laps": {
+          "missing": 1,
+          "missing_pct": 0.06,
+          "dtype": "float64"
+        },
+        "openf1_compounds": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        },
+        "openf1_start_position": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "openf1_end_position": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "int64"
+        },
+        "openf1_position_changes": {
+          "missing": 16,
+          "missing_pct": 0.88,
+          "dtype": "float64"
+        },
+        "openf1_source": {
+          "missing": 0,
+          "missing_pct": 0.0,
+          "dtype": "str"
+        }
+      }
+    },
+    "fastf1_qualifying_summary": {
+      "rows": 0,
+      "columns": [],
+      "missing": {}
+    }
+  },
+  "outliers": {
+    "results": {
+      "finish_position": {
+        "count": 12299,
+        "outliers": 0,
+        "lower_bound": -27.0,
+        "upper_bound": 50.0
+      },
+      "points": {
+        "count": 12299,
+        "outliers": 602,
+        "lower_bound": -12.0,
+        "upper_bound": 16.0
+      },
+      "laps": {
+        "count": 12299,
+        "outliers": 0,
+        "lower_bound": -16.0,
+        "upper_bound": 127.5
+      },
+      "grid_position": {
+        "count": 12299,
+        "outliers": 0,
+        "lower_bound": -24.0,
+        "upper_bound": 46.0
+      }
+    },
+    "qualifying": {
+      "quali_best_seconds": {
+        "count": 10315,
+        "outliers": 1,
+        "lower_bound": 26.05649999999997,
+        "upper_bound": 147.21600000000004
+      },
+      "quali_gap_to_pole_seconds": {
+        "count": 10315,
+        "outliers": 183,
+        "lower_bound": -4.734499999999983,
+        "upper_bound": 7.882999999999981
+      }
+    }
+  },
+  "notes": [
+    "Missing values are preserved; they are not filled with future or synthetic information.",
+    "finish_position is the classified position, with unclassified cars placed after the field.",
+    "Actual points come from the data source; scoring-rule functions are only used for predictions."
+  ]
+}
