@@ -1,15 +1,15 @@
 {
-  "started_at": "2026-11-12T11:44:52+00:00",
+  "started_at": "2026-11-13T13:44:57+00:00",
   "arguments": {
     "start": 1995,
     "end": 2026,
     "update": true,
     "force": false,
-    "skip_openf1": false,
+    "skip_openf1": true,
     "skip_fastf1": true,
     "fastf1_schedules": false,
     "openf1_max_sessions": null,
-    "openf1_endpoints": "weather,drivers,position,pit,stints,laps,race_control"
+    "openf1_endpoints": "weather,drivers,position,intervals,pit,stints,laps,race_control"
   },
   "sources": {
     "jolpica": {
@@ -27,22 +27,10 @@
       "files_written": 18,
       "errors": 0,
       "latest_race": "2026_23"
-    },
-    "openf1": {
-      "source": "openf1",
-      "seasons": [
-        2023,
-        2024,
-        2025,
-        2026
-      ],
-      "sessions_collected": 93,
-      "files_written": 24,
-      "errors": 2
     }
   },
   "coverage": {
-    "generated_at": "2026-11-12T11:47:19+00:00",
+    "generated_at": "2026-11-13T13:50:48+00:00",
     "requested_seasons": [
       1995,
       2026
@@ -52,9 +40,9 @@
         "season": 1995,
         "races_scheduled": 17,
         "races_with_results": 17,
-        "result_rows": 372,
+        "result_rows": 418,
         "races_with_qualifying": 17,
-        "qualifying_rows": 372,
+        "qualifying_rows": 418,
         "races_with_sprint": 0,
         "sprint_rows": 0,
         "jolpica_collected_at": "2026-11-11T16:12:13+00:00",
@@ -75,7 +63,7 @@
         "season": 1996,
         "races_scheduled": 16,
         "races_with_results": 16,
-        "result_rows": 303,
+        "result_rows": 328,
         "races_with_qualifying": 7,
         "qualifying_rows": 142,
         "races_with_sprint": 0,
@@ -98,9 +86,9 @@
         "season": 1997,
         "races_scheduled": 17,
         "races_with_results": 17,
-        "result_rows": 336,
+        "result_rows": 374,
         "races_with_qualifying": 10,
-        "qualifying_rows": 190,
+        "qualifying_rows": 210,
         "races_with_sprint": 0,
         "sprint_rows": 0,
         "jolpica_collected_at": "2026-11-11T16:13:58+00:00",
@@ -121,7 +109,7 @@
         "season": 1998,
         "races_scheduled": 16,
         "races_with_results": 16,
-        "result_rows": 316,
+        "result_rows": 347,
         "races_with_qualifying": 7,
         "qualifying_rows": 143,
         "races_with_sprint": 0,
@@ -144,9 +132,9 @@
         "season": 1999,
         "races_scheduled": 16,
         "races_with_results": 16,
-        "result_rows": 316,
-        "races_with_qualifying": 0,
-        "qualifying_rows": 0,
+        "result_rows": 351,
+        "races_with_qualifying": 3,
+        "qualifying_rows": 65,
         "races_with_sprint": 0,
         "sprint_rows": 0,
         "jolpica_collected_at": "2026-11-11T16:17:38+00:00",
@@ -168,8 +156,8 @@
         "races_scheduled": 17,
         "races_with_results": 17,
         "result_rows": 373,
-        "races_with_qualifying": 0,
-        "qualifying_rows": 0,
+        "races_with_qualifying": 4,
+        "qualifying_rows": 88,
         "races_with_sprint": 0,
         "sprint_rows": 0,
         "jolpica_collected_at": "2026-11-12T02:48:07+00:00",
@@ -724,7 +712,7 @@
         "qualifying_rows": 403,
         "races_with_sprint": 6,
         "sprint_rows": 120,
-        "jolpica_collected_at": "2026-11-12T11:44:53+00:00",
+        "jolpica_collected_at": "2026-11-13T13:44:58+00:00",
         "openf1_race_sessions": 24.0,
         "openf1_sessions_with_data": 24.0,
         "openf1_drivers_sessions": 24.0,
@@ -747,7 +735,7 @@
         "qualifying_rows": 479,
         "races_with_sprint": 6,
         "sprint_rows": 120,
-        "jolpica_collected_at": "2026-11-12T11:45:17+00:00",
+        "jolpica_collected_at": "2026-11-13T13:45:52+00:00",
         "openf1_race_sessions": 24.0,
         "openf1_sessions_with_data": 24.0,
         "openf1_drivers_sessions": 24.0,
@@ -770,7 +758,7 @@
         "qualifying_rows": 395,
         "races_with_sprint": 6,
         "sprint_rows": 122,
-        "jolpica_collected_at": "2026-11-12T11:45:41+00:00",
+        "jolpica_collected_at": "2026-11-13T13:46:40+00:00",
         "openf1_race_sessions": 23.0,
         "openf1_sessions_with_data": 23.0,
         "openf1_drivers_sessions": 23.0,
@@ -791,5 +779,5 @@
       "fastf1": "Optional; event schedules are cheap, detailed sessions are opt-in."
     }
   },
-  "finished_at": "2026-11-12T11:47:20+00:00"
+  "finished_at": "2026-11-13T13:50:48+00:00"
 }

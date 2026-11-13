@@ -1,6 +1,6 @@
 # Data coverage by source and season
 
-Generated: 2026-11-13T13:24:45+00:00
+Generated: 2026-11-13T13:50:48+00:00
 
 | Season | Scheduled | Results | Result rows | Qualifying | Quali rows | Sprint | Sprint rows | OpenF1 races | FastF1 events |
 |---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -33,9 +33,9 @@ Generated: 2026-11-13T13:24:45+00:00
 | 2021 | 22 | 22 | 440 | 22 | 439 | 3 | 60 | — | 0 |
 | 2022 | 22 | 22 | 440 | 22 | 440 | 3 | 60 | — | 0 |
 | 2023 | 22 | 22 | 440 | 22 | 440 | 6 | 120 | 22 | 0 |
-| 2024 | 24 | 24 | 479 | 24 | 479 | 6 | 120 | 24 | 0 |
-| 2025 | 24 | 24 | 479 | 24 | 479 | 6 | 120 | 24 | 0 |
-| 2026 | 23 | 20 | 440 | 20 | 435 | 6 | 132 | 23 | 0 |
+| 2024 | 24 | 24 | 403 | 24 | 403 | 6 | 120 | 24 | 0 |
+| 2025 | 24 | 24 | 422 | 24 | 479 | 6 | 120 | 24 | 0 |
+| 2026 | 23 | 20 | 384 | 20 | 395 | 6 | 122 | 23 | 0 |
 
 Notes:
 - Jolpica is the primary historical source; absent seasons/endpoints are never filled with synthetic data.
